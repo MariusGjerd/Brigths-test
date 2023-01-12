@@ -25,3 +25,15 @@ SELECT country.name, (country.population / (SELECT ROUND(SUM(country.population)
 * 100 AS WorldPopPercentage, country.surfacearea
 FROM country 
 ORDER BY WorldPopPercentage DESC;
+
+
+--OPPGAVE 3
+
+SELECT name,
+    CASE
+        WHEN governmentform LIKE '%Monarchy%' THEN 'Monarki'
+        WHEN governmentform LIKE '%Republic%' THEN 'Republik'
+        ELSE 'Annet'
+    END as "Styresett"
+FROM country
+ORDER BY name ASC;
