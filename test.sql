@@ -27,7 +27,7 @@ FROM country
 ORDER BY WorldPopPercentage DESC;
 
 
---OPPGAVE 3
+--OPPGAVE 4
 
 SELECT name,
     CASE
