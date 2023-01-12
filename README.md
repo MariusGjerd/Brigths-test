@@ -1,2 +1,2 @@
 # Brigths-test
-Dette er ett test repo for oppgaver
+Dette er ett test repo for oppgaver test
