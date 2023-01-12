@@ -1,24 +1,27 @@
 
---OPAGEV 1
+--OPPGAVE 1
 
-SELECT name, population
-FROM city
-WHERE name LIKE 'O%o'
-ORDER BY name
+SELECT country.name 
+FROM country
+WHERE code NOT IN (SELECT countrycode FROM city)
+ORDER BY country.name ASC;
 
 
 --OPPGAVE 2
 
-SELECT country.name, city.name, city.population 
+
+SELECT * 
 FROM city
-JOIN country ON city.countrycode = country.code
-WHERE city.name LIKE 'O%o'
-ORDER BY city.name, country.name
+WHERE name IN (SELECT name FROM city
+GROUP BY name
+HAVING COUNT(*) > 1)
+ORDER BY name ASC;
 
 
 --OPPGAVE 3
 
-SELECT country.name, city.name, country.continent
-FROM country
-JOIN city ON country.code = city.countrycode
-ORDER BY country.continent, country.name
+
+SELECT country.name, (country.population / (SELECT ROUND(SUM(country.population)) FROM country))
+* 100 AS WorldPopPercentage, country.surfacearea
+FROM country 
+ORDER BY WorldPopPercentage DESC;
